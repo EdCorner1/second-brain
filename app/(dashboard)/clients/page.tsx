@@ -88,10 +88,10 @@ export default function Clients() {
       contact: 'TBD'
     }
   ])
-  const [newClient, setNewClient] = useState({
+  const [newClient, setNewClient] = useState<Omit<Client, 'id'>>({
     name: '',
     monthlyRate: 0,
-    status: 'pending' as const,
+    status: 'pending',
     contentPerMonth: 0,
     videoType: '',
     notes: '',
@@ -188,7 +188,7 @@ export default function Clients() {
           />
           <select
             value={newClient.status}
-            onChange={(e) => setNewClient({ ...newClient, status: e.target.value as 'active' | 'pending' | 'paused' })}
+            onChange={(e) => setNewClient({ ...newClient, status: e.target.value as 'active' | 'pending' | 'paused' } as Omit<Client, 'id'>)}
           >
             <option value="active">Active</option>
             <option value="pending">Pending</option>
