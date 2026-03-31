@@ -25,6 +25,11 @@ export default function Sidebar() {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
 
+  const handleLogout = () => {
+    localStorage.removeItem('auth-token')
+    window.location.href = '/auth'
+  }
+
   return (
     <>
       <button className="mobile-menu-btn" onClick={() => setMobileOpen(!mobileOpen)}>
@@ -52,7 +57,25 @@ export default function Sidebar() {
         </nav>
 
         <div className="sidebar-footer">
-          <p>v1.0.0</p>
+          <button
+            onClick={handleLogout}
+            style={{
+              width: '100%',
+              padding: '8px 12px',
+              background: '#e74c3c',
+              color: 'white',
+              border: 'none',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              fontSize: '12px',
+              fontWeight: '600',
+              marginBottom: '8px',
+              fontFamily: "'Space Grotesk', sans-serif"
+            }}
+          >
+            Logout
+          </button>
+          <p>v1.0.1</p>
         </div>
       </aside>
     </>
