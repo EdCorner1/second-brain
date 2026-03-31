@@ -23,7 +23,7 @@ export default function Auth() {
     setError('')
 
     // Verify password (you can change this)
-    const correctPassword = 'edcorner' // Change to your desired password
+    const correctPassword = 'EdCorner$2026!SecondBrain' // Strong password - change to your preference
 
     if (password === correctPassword) {
       localStorage.setItem('auth-token', 'authenticated')
