@@ -85,7 +85,7 @@ export default function Goals() {
         ) : (
           goals.map(goal => (
             <div key={goal.id} className="card">
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: start', marginBottom: '12px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
                 <div>
                   <h3>{goal.title}</h3>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '12px', marginBottom: '8px' }}>
