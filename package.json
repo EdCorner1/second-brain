@@ -18,6 +18,8 @@
     "mailparser": "^3.6.5"
   },
   "devDependencies": {
-    "typescript": "5.3.3"
+    "typescript": "5.3.3",
+    "@types/react": "^18.3.1",
+    "@types/node": "^20.12.0"
   }
 }
