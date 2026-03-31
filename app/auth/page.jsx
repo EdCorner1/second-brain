@@ -17,7 +17,7 @@ export default function Auth() {
     }
   }, [router])
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = (e) => {
     e.preventDefault()
     setIsLoading(true)
     setError('')

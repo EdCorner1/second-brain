@@ -50,7 +50,7 @@ export default function ContentPipeline() {
     localStorage.setItem('pipeline', JSON.stringify(updated))
   }
 
-  const stageColors: { [key: string]: string } = {
+  const stageColors= {
     research: '#666',
     scripted: '#3498db',
     filming: '#f39c12',
@@ -59,7 +59,7 @@ export default function ContentPipeline() {
     uploaded: '#95a5a6'
   }
 
-  const stageLabels: { [key: string]: string } = {
+  const stageLabels= {
     research: '🔍 Research',
     scripted: '📝 Scripted',
     filming: '🎬 Filming',

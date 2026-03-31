@@ -39,7 +39,7 @@ export default function ContentCalendar() {
     localStorage.setItem('content-calendar', JSON.stringify(updated))
   }
 
-  const platformIcons: { [key: string]: string } = {
+  const platformIcons= {
     tiktok: '🎵',
     youtube: '🎬',
     instagram: '📸',
@@ -47,7 +47,7 @@ export default function ContentCalendar() {
     linkedin: '💼'
   }
 
-  const statusColors: { [key: string]: string } = {
+  const statusColors= {
     planned: '#666',
     filming: '#f39c12',
     editing: '#3498db',
