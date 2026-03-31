@@ -2,24 +2,15 @@
 
 import { useState, useEffect } from 'react'
 
-interface HealthLog {
-  id: number
-  date: string
-  sleep: number
-  workouts: number
-  energy: 1 | 2 | 3 | 4 | 5
-  mood: 1 | 2 | 3 | 4 | 5
-  notes: string
-}
 
 export default function HealthFitness() {
-  const [logs, setLogs] = useState<HealthLog[]>([])
+  const [logs, setLogs] = useState([])
   const [newLog, setNewLog] = useState({
     date: new Date().toISOString().split('T')[0],
     sleep: 8,
     workouts: 0,
-    energy: 3 as const,
-    mood: 3 as const,
+    energy: 3,
+    mood: 3,
     notes: ''
   })
 
@@ -185,4 +176,3 @@ export default function HealthFitness() {
       </div>
     </div>
   )
-}

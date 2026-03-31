@@ -2,16 +2,9 @@
 
 import { useState, useEffect } from 'react'
 
-interface Meal {
-  id: number
-  name: string
-  prep: string
-  servings: number
-  ingredients: string
-}
 
 export default function MealPlanning() {
-  const [meals, setMeals] = useState<Meal[]>([])
+  const [meals, setMeals] = useState([])
   const [newMeal, setNewMeal] = useState({ name: '', prep: '', servings: 1, ingredients: '' })
 
   useEffect(() => {
@@ -101,4 +94,3 @@ export default function MealPlanning() {
       </div>
     </div>
   )
-}

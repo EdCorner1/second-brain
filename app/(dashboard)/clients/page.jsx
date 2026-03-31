@@ -2,21 +2,9 @@
 
 import { useState, useEffect } from 'react'
 
-interface Client {
-  id: string
-  name: string
-  monthlyRate: number
-  status: 'active' | 'pending' | 'paused'
-  contentPerMonth: number
-  videoType: string
-  startDate?: string
-  endDate?: string
-  notes: string
-  contact?: string
-}
 
 export default function Clients() {
-  const [clients, setClients] = useState<Client[]>([
+  const [clients, setClients] = useState([
     {
       id: '1',
       name: 'Pingo AI',
@@ -88,7 +76,7 @@ export default function Clients() {
       contact: 'TBD'
     }
   ])
-  const [newClient, setNewClient] = useState<Omit<Client, 'id'>>({
+  const [newClient, setNewClient] = useState>({
     name: '',
     monthlyRate: 0,
     status: 'pending',
@@ -97,7 +85,7 @@ export default function Clients() {
     notes: '',
     contact: ''
   })
-  const [expandedId, setExpandedId] = useState<string | null>(null)
+  const [expandedId, setExpandedId] = useState(null)
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem('clients-full') || '[]')
@@ -106,7 +94,7 @@ export default function Clients() {
 
   const addClient = () => {
     if (!newClient.name.trim()) return
-    const updated = [...clients, { ...newClient, id: Date.now().toString(), status: newClient.status as 'active' | 'pending' | 'paused' }]
+    const updated = [...clients, { ...newClient, id: Date.now().toString(), status: newClient.status | 'pending' | 'paused' }]
     setClients(updated)
     localStorage.setItem('clients-full', JSON.stringify(updated))
     setNewClient({ name: '', monthlyRate: 0, status: 'pending', contentPerMonth: 0, videoType: '', notes: '', contact: '' })
@@ -188,7 +176,7 @@ export default function Clients() {
           />
           <select
             value={newClient.status}
-            onChange={(e) => setNewClient({ ...newClient, status: e.target.value as 'active' | 'pending' | 'paused' } as Omit<Client, 'id'>)}
+            onChange={(e) => setNewClient({ ...newClient, status: e.target.value | 'pending' | 'paused' } as Omit<Client, 'id'>)}
           >
             <option value="active">Active</option>
             <option value="pending">Pending</option>
@@ -330,4 +318,3 @@ export default function Clients() {
       )}
     </div>
   )
-}

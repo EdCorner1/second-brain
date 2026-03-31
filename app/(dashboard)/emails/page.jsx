@@ -2,29 +2,12 @@
 
 import { useEffect, useState } from 'react'
 
-interface Email {
-  id: string
-  from: string
-  subject: string
-  preview: string
-  date: string
-  read: boolean
-  body?: string
-}
 
-interface EmailConfig {
-  email: string
-  imapServer: string
-  imapPort: number
-  smtpServer: string
-  smtpPort: number
-  appPassword?: string
-}
 
 export default function Emails() {
-  const [config, setConfig] = useState<EmailConfig | null>(null)
-  const [emails, setEmails] = useState<Email[]>([])
-  const [selectedEmail, setSelectedEmail] = useState<Email | null>(null)
+  const [config, setConfig] = useState(null)
+  const [emails, setEmails] = useState([])
+  const [selectedEmail, setSelectedEmail] = useState(null)
   const [isLoadingEmails, setIsLoadingEmails] = useState(false)
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
   const [draftReply, setDraftReply] = useState('')
@@ -57,7 +40,7 @@ export default function Emails() {
       alert('Please fill in email and password')
       return
     }
-    const newConfig: EmailConfig = {
+    const newConfig = {
       email: formData.email,
       appPassword: formData.appPassword,
       imapServer: formData.imapServer,
@@ -382,4 +365,3 @@ export default function Emails() {
       )}
     </div>
   )
-}

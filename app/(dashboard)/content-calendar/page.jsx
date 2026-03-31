@@ -2,22 +2,13 @@
 
 import { useState, useEffect } from 'react'
 
-interface ContentItem {
-  id: number
-  title: string
-  platform: 'tiktok' | 'youtube' | 'instagram' | 'twitter' | 'linkedin'
-  status: 'planned' | 'filming' | 'editing' | 'scheduled' | 'published'
-  dueDate: string
-  client: string
-  notes: string
-}
 
 export default function ContentCalendar() {
-  const [content, setContent] = useState<ContentItem[]>([])
+  const [content, setContent] = useState([])
   const [newContent, setNewContent] = useState({
     title: '',
-    platform: 'tiktok' as const,
-    status: 'planned' as const,
+    platform: 'tiktok',
+    status: 'planned',
     dueDate: '',
     client: '',
     notes: ''
@@ -198,4 +189,3 @@ export default function ContentCalendar() {
       </div>
     </div>
   )
-}

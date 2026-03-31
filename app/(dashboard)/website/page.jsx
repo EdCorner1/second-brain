@@ -2,16 +2,9 @@
 
 import { useState, useEffect } from 'react'
 
-interface WebsiteData {
-  siteUrl: string
-  framework: string
-  designNotes: string
-  inspiration: string
-  codeSnippets: string
-}
 
 export default function Website() {
-  const [website, setWebsite] = useState<WebsiteData>({
+  const [website, setWebsite] = useState({
     siteUrl: '',
     framework: 'HTML + CSS',
     designNotes: '',
@@ -91,4 +84,3 @@ export default function Website() {
       <button onClick={saveWebsite} style={{ marginTop: '20px', width: '100%' }}>Save Website Details</button>
     </div>
   )
-}

@@ -1,15 +1,11 @@
 import type { Metadata } from 'next'
 import './globals.css'
 
-export const metadata: Metadata = {
-  title: "Ed's Second Brain",
-  description: 'Personal mission control dashboard',
-}
+export const metadata = {
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
 }) {
   return (
     <html lang="en">
@@ -21,4 +17,3 @@ export default function RootLayout({
       </body>
     </html>
   )
-}

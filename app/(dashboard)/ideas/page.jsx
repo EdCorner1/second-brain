@@ -2,17 +2,10 @@
 
 import { useState, useEffect } from 'react'
 
-interface Idea {
-  id: number
-  title: string
-  description: string
-  category: 'app' | 'business' | 'content'
-  status: 'brainstorm' | 'planning' | 'building'
-}
 
 export default function IdeaBank() {
-  const [ideas, setIdeas] = useState<Idea[]>([])
-  const [newIdea, setNewIdea] = useState({ title: '', description: '', category: 'app' as const, status: 'brainstorm' as const })
+  const [ideas, setIdeas] = useState([])
+  const [newIdea, setNewIdea] = useState({ title: '', description: '', category: 'app', status: 'brainstorm' })
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem('ideas') || '[]')
@@ -61,7 +54,7 @@ export default function IdeaBank() {
           />
           <select
             value={newIdea.category}
-            onChange={(e) => setNewIdea({ ...newIdea, category: e.target.value as 'app' | 'business' | 'content' })}
+            onChange={(e) => setNewIdea({ ...newIdea, category: e.target.value | 'business' | 'content' })}
           >
             <option value="app">App</option>
             <option value="business">Business</option>
@@ -109,7 +102,7 @@ export default function IdeaBank() {
 
               <select
                 value={idea.status}
-                onChange={(e) => updateStatus(idea.id, e.target.value as 'brainstorm' | 'planning' | 'building')}
+                onChange={(e) => updateStatus(idea.id, e.target.value | 'planning' | 'building')}
                 style={{ width: '100%' }}
               >
                 <option value="brainstorm">Brainstorm</option>
@@ -122,4 +115,3 @@ export default function IdeaBank() {
       </div>
     </div>
   )
-}

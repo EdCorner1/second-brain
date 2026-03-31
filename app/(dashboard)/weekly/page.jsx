@@ -2,20 +2,9 @@
 
 import { useState, useEffect } from 'react'
 
-interface WeeklyReview {
-  id: number
-  week: string
-  date: string
-  videosPublished: number
-  incomeEarned: number
-  goalsCompleted: number
-  highlights: string
-  blockers: string
-  nextWeek: string
-}
 
 export default function WeeklyReview() {
-  const [reviews, setReviews] = useState<WeeklyReview[]>([])
+  const [reviews, setReviews] = useState([])
   const [newReview, setNewReview] = useState({
     week: `Week of ${new Date().toLocaleDateString()}`,
     date: new Date().toISOString().split('T')[0],
@@ -229,4 +218,3 @@ export default function WeeklyReview() {
       </div>
     </div>
   )
-}

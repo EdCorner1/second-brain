@@ -2,22 +2,13 @@
 
 import { useState, useEffect } from 'react'
 
-interface PipelineItem {
-  id: number
-  title: string
-  client: string
-  stage: 'research' | 'scripted' | 'filming' | 'editing' | 'ready' | 'uploaded'
-  dueDate: string
-  batchSize: number
-  notes: string
-}
 
 export default function ContentPipeline() {
-  const [pipeline, setPipeline] = useState<PipelineItem[]>([])
+  const [pipeline, setPipeline] = useState([])
   const [newItem, setNewItem] = useState({
     title: '',
     client: 'Pingo AI',
-    stage: 'research' as const,
+    stage: 'research',
     dueDate: '',
     batchSize: 1,
     notes: ''
@@ -77,7 +68,7 @@ export default function ContentPipeline() {
     uploaded: '⬆️ Uploaded'
   }
 
-  const stages = ['research', 'scripted', 'filming', 'editing', 'ready', 'uploaded'] as const
+  const stages = ['research', 'scripted', 'filming', 'editing', 'ready', 'uploaded']
   const stageCounts = stages.map(stage => pipeline.filter(p => p.stage === stage).length)
 
   // Sort by due date
@@ -245,4 +236,3 @@ export default function ContentPipeline() {
       </div>
     </div>
   )
-}

@@ -2,16 +2,9 @@
 
 import { useState, useEffect } from 'react'
 
-interface BrandData {
-  logo: string
-  missionStatement: string
-  colors: { primary: string; secondary: string; accent: string }
-  fonts: string[]
-  websites: { [key: string]: string }
-}
 
 export default function PersonalBrand() {
-  const [brand, setBrand] = useState<BrandData>({
+  const [brand, setBrand] = useState({
     logo: '',
     missionStatement: '',
     colors: { primary: '#CCFF00', secondary: '#1a1a1a', accent: '#0f0f0f' },
@@ -118,4 +111,3 @@ export default function PersonalBrand() {
       <button onClick={saveBrand} style={{ marginTop: '20px', width: '100%' }}>Save Brand Assets</button>
     </div>
   )
-}

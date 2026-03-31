@@ -2,14 +2,9 @@
 
 import { useState, useEffect } from 'react'
 
-interface FinancialData {
-  total: number
-  expenses: number
-  clients: { id: string; name: string; monthly: number; status: 'active' | 'pending' | 'paused'; rate: string }[]
-}
 
 export default function FinancialTracker() {
-  const [financial, setFinancial] = useState<FinancialData>({
+  const [financial, setFinancial] = useState({
     total: 6000,
     expenses: 0,
     clients: [
@@ -22,7 +17,7 @@ export default function FinancialTracker() {
       { id: '7', name: 'Clawbite', monthly: 1000, status: 'pending', rate: '$1,000/month (pending close)' }
     ]
   })
-  const [newClient, setNewClient] = useState({ name: '', monthly: 0, status: 'pending' as const, rate: '' })
+  const [newClient, setNewClient] = useState({ name: '', monthly: 0, status: 'pending', rate: '' })
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem('financial') || '{}')
@@ -33,7 +28,7 @@ export default function FinancialTracker() {
     if (!newClient.name.trim()) return
     const updated = {
       ...financial,
-      clients: [...financial.clients, { ...newClient, id: Date.now().toString(), status: newClient.status as 'active' | 'pending' | 'paused' }],
+      clients: [...financial.clients, { ...newClient, id: Date.now().toString(), status: newClient.status | 'pending' | 'paused' }],
       total: newClient.status === 'active' ? financial.total + newClient.monthly : financial.total
     }
     setFinancial(updated)
@@ -140,7 +135,7 @@ export default function FinancialTracker() {
           />
           <select
             value={newClient.status}
-            onChange={(e) => setNewClient({ ...newClient, status: e.target.value as 'active' | 'pending' | 'paused' })}
+            onChange={(e) => setNewClient({ ...newClient, status: e.target.value | 'pending' | 'paused' })}
             style={{ gridColumn: '1 / -1' }}
           >
             <option value="active">Active</option>
@@ -214,4 +209,3 @@ export default function FinancialTracker() {
       )}
     </div>
   )
-}

@@ -2,18 +2,10 @@
 
 import { useEffect, useState } from 'react'
 
-interface Goal {
-  id: number
-  title: string
-  description: string
-  target: string
-  progress: number
-  category: 'personal' | 'business'
-}
 
 export default function Goals() {
-  const [goals, setGoals] = useState<Goal[]>([])
-  const [newGoal, setNewGoal] = useState({ title: '', description: '', target: '', category: 'personal' as const, progress: 0 })
+  const [goals, setGoals] = useState([])
+  const [newGoal, setNewGoal] = useState({ title: '', description: '', target: '', category: 'personal', progress: 0 })
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem('goals') || '[]')
@@ -67,7 +59,7 @@ export default function Goals() {
           />
           <select
             value={newGoal.category}
-            onChange={(e) => setNewGoal({ ...newGoal, category: e.target.value as 'personal' | 'business' })}
+            onChange={(e) => setNewGoal({ ...newGoal, category: e.target.value | 'business' })}
           >
             <option value="personal">Personal</option>
             <option value="business">Business</option>
@@ -116,4 +108,3 @@ export default function Goals() {
       </div>
     </div>
   )
-}
